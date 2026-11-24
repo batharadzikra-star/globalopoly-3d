@@ -8,7 +8,9 @@ import {
   Music,
   Settings,
   LogOut,
+  Download,
 } from 'lucide-react';
+import { useInstallPrompt } from '../hooks/useInstallPrompt';
 import { HERO_BANNER_IMAGE, NPCS } from '../data/characters';
 import { getLearningLevel } from '../data/learningModules';
 import { AudioSettings, LearningProgressState } from '../types/game';
@@ -37,6 +39,7 @@ export const MainMenu: React.FC<MainMenuProps> = ({
   onOpenSettings,
 }) => {
   const [exitNotice, setExitNotice] = React.useState(false);
+  const { canInstall, install } = useInstallPrompt();
   const levelInfo = getLearningLevel(learningProgress.exp);
 
   const handleAction = (fn: () => void) => {
@@ -75,6 +78,18 @@ export const MainMenu: React.FC<MainMenuProps> = ({
           </button>
         </nav>
         <div className="flex items-center gap-2 shrink-0">
+          {canInstall && (
+            <button
+              type="button"
+              onClick={() => handleAction(() => void install())}
+              className="px-3 py-2 text-xs font-semibold rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 flex items-center gap-1.5 cursor-pointer"
+              title="Pasang GLOBALOPOLY sebagai aplikasi"
+            >
+              <Download className="w-3.5 h-3.5" aria-hidden="true" />
+              <span className="hidden xl:inline">Pasang App</span>
+              <span className="sr-only xl:hidden">Pasang App</span>
+            </button>
+          )}
           <button
             type="button"
             onClick={() => handleAction(onToggleMusic)}
