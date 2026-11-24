@@ -1,0 +1,6 @@
+{
+  "name": "GLOBALOPOLY: Ekspedisi Lintas Benua",
+  "description": "Game edukasi board game 3D interaktif bertema Revolusi Industri hingga Era Digital untuk 3-4 pemain dalam mode landscape.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

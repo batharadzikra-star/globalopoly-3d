@@ -1,0 +1,733 @@
+import { Question } from '../types/game';
+import { MARATHON_QUESTIONS } from './marathonQuestions';
+
+/**
+ * Bank Soal Terpisah — GLOBALOPOLY: EKSPEDISI LINTAS BENUA
+ * Menggabungkan soal Kategori 1 (Kartu Kesempatan), Kategori 2 (Kartu Dana Umum),
+ * 90 Soal Ekspansi Progresif 3 Level (Putaran 1–5, 6–10, 11–15+), serta 24 soal negara.
+ */
+const CORE_QUESTIONS: Question[] = [
+  // =========================================================================
+  // KATEGORI 1: KARTU KESEMPATAN (Revolusi Industri & Era Digital) - Hal 15–17
+  // =========================================================================
+  {
+    id: 'chance_q1',
+    category: 'Revolusi Industri',
+    deckTag: 'chance',
+    difficulty: 'Dasar',
+    text: 'Revolusi Industri tahap apakah yang ditandai dengan penggunaan tenaga mesin uap (dipopulerkan oleh James Watt) sebagai titik awal mekanisasi produksi di pabrik tekstil abad ke-18?',
+    options: [
+      'Revolusi Industri 1.0',
+      'Revolusi Industri 2.0',
+      'Revolusi Industri 3.0',
+      'Revolusi Industri 4.0',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Revolusi Industri 1.0 dimulai pada abad ke-18 dengan ciri utama penggunaan mesin uap sebagai sumber tenaga dan peralihan dari produksi manual ke mekanisasi.',
+    npc: 'arka',
+  },
+  {
+    id: 'chance_q2',
+    category: 'Era Digital',
+    deckTag: 'chance',
+    difficulty: 'Dasar',
+    text: 'Dalam ekosistem Revolusi Industri 4.0 dan Era Digital, teknologi utama yang berfungsi menghubungkan berbagai perangkat fisik melalui internet agar dapat saling mengirim dan menerima data disebut...',
+    options: [
+      'Cloud Computing',
+      'Internet of Things (IoT)',
+      'Mesin Uap James Watt',
+      'Jalur perakitan massal (assembly line)',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Internet of Things (IoT) adalah teknologi yang menghubungkan perangkat fisik melalui internet sehingga mampu mengirim dan menerima data secara terhubung, seperti lampu pintar atau sensor.',
+    npc: 'arka',
+  },
+  {
+    id: 'chance_q3',
+    category: 'Revolusi Industri',
+    deckTag: 'chance',
+    difficulty: 'Dasar',
+    text: 'Manakah di bawah ini yang merupakan ciri utama pembeda dari Revolusi Industri 2.0 dibandingkan tahapan lainnya?',
+    options: [
+      'Penggunaan kecerdasan buatan (AI) dan Big Data',
+      'Otomatisasi pabrik menggunakan komputer dan mikroprosesor',
+      'Penggunaan energi listrik dan sistem jalur perakitan (assembly line)',
+      'Penggunaan mesin uap untuk lokomotif',
+    ],
+    correctIndex: 2,
+    explanation:
+      'Revolusi Industri 2.0 ditandai dengan elektrifikasi (penggunaan energi listrik) dan sistem jalur perakitan untuk mendukung produksi massal.',
+    npc: 'arka',
+  },
+  {
+    id: 'chance_q4',
+    category: 'Revolusi Industri',
+    deckTag: 'chance',
+    difficulty: 'Menengah',
+    text: 'Faktor alam dan ekonomi manakah yang menjadi pendorong utama lahirnya Revolusi Industri pertama kali di Inggris pada abad ke-18?',
+    options: [
+      'Melimpahnya jaringan internet dan kecerdasan buatan',
+      'Ketersediaan sumber daya batu bara, bijih besi, serta modal investasi',
+      'Penemuan komputer mikroprosesor dan robot pabrik',
+      'Berkembangnya layanan penyimpanan awan (cloud computing)',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Revolusi Industri di Inggris didorong oleh kemajuan ilmu pengetahuan, ketersediaan batu bara dan bijih besi, pertumbuhan penduduk, perdagangan, serta modal investasi.',
+    npc: 'arka',
+  },
+  {
+    id: 'chance_q5',
+    category: 'Revolusi Industri',
+    deckTag: 'chance',
+    difficulty: 'Dasar',
+    text: 'Pada sekitar tahun 1970-an, proses produksi di pabrik mulai dikendalikan oleh program komputer, mikroprosesor, dan robot industri. Tahapan ini dikenal sebagai...',
+    options: [
+      'Revolusi Industri 1.0 (Mekanisasi)',
+      'Revolusi Industri 2.0 (Elektrifikasi)',
+      'Revolusi Industri 3.0 (Otomatisasi)',
+      'Revolusi Industri 4.0 (Konektivitas Digital)',
+    ],
+    correctIndex: 2,
+    explanation:
+      'Revolusi Industri 3.0 ditandai dengan penggunaan komputer, elektronik, dan robot untuk menjalankan otomatisasi proses produksi.',
+    npc: 'arka',
+  },
+  {
+    id: 'chance_q6',
+    category: 'Era Digital',
+    deckTag: 'chance',
+    difficulty: 'Menengah',
+    text: 'Sebuah platform belanja online menganalisis jutaan riwayat pencarian dan transaksi penggunanya untuk memprediksi produk apa yang paling diminati bulan depan. Teknologi era digital yang digunakan adalah...',
+    options: [
+      'Big Data',
+      'Mesin uap mekanis',
+      'Cloud Computing',
+      'Jalur perakitan manual',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Big Data adalah kumpulan data dalam jumlah sangat besar yang dianalisis untuk menemukan pola perilaku konsumen dan membantu pengambilan keputusan.',
+    npc: 'arka',
+  },
+  {
+    id: 'chance_q7',
+    category: 'Era Digital',
+    deckTag: 'chance',
+    difficulty: 'Dasar',
+    text: 'Siswa dapat mengerjakan tugas kelompok di Google Drive secara bersamaan dari rumah masing-masing tanpa perlu memindahkan file lewat flashdisk. Kemudahan ini merupakan manfaat dari teknologi...',
+    options: [
+      'Cloud Computing (komputasi awan)',
+      'Robotika perakitan mobil',
+      'Lokomotif tenaga uap',
+      'Sensor suhu lingkungan',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Cloud Computing memungkinkan penyimpanan, pengolahan, dan pengaksesan dokumen secara fleksibel dari berbagai perangkat melalui jaringan internet.',
+    npc: 'arka',
+  },
+  {
+    id: 'chance_q8',
+    category: 'Era Digital',
+    deckTag: 'chance',
+    difficulty: 'Lanjut',
+    text: 'Manakah pernyataan yang paling tepat membedakan cakupan antara Revolusi Industri 4.0 dan Era Digital?',
+    options: [
+      'Revolusi Industri 4.0 hanya terjadi di sekolah, sedangkan Era Digital hanya di pabrik',
+      'Revolusi Industri 4.0 berfokus pada teknologi digital dalam proses produksi/industri, sedangkan Era Digital mencakup seluruh aspek kehidupan manusia',
+      'Revolusi Industri 4.0 menggunakan listrik, sedangkan Era Digital menggunakan mesin uap',
+      'Keduanya tidak memiliki hubungan sama sekali dengan perkembangan internet',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Revolusi Industri 4.0 berfokus pada penerapan sistem cerdas di sektor industri/produksi, sedangkan Era Digital cakupannya lebih luas meliputi pendidikan, kesehatan, sosial, hingga komunikasi.',
+    npc: 'arka',
+  },
+
+  // =========================================================================
+  // KATEGORI 2: KARTU DANA UMUM (Strategi & Solusi Masa Depan) - Hal 17–19
+  // =========================================================================
+  {
+    id: 'chest_q1',
+    category: 'Strategi Masa Depan',
+    deckTag: 'community_chest',
+    difficulty: 'Dasar',
+    scenario:
+      'Sebuah berita palsu mengenai bencana alam tersebar cepat di grup percakapan tanpa sumber yang jelas, memicu kepanikan warga.',
+    text: 'Sebagai warga digital yang bijak berdasarkan modul pembelajaran, langkah pencegahan apa yang harus dilakukan?',
+    options: [
+      'Langsung meneruskan pesan agar kelompok lain ikut waspada',
+      'Memeriksa fakta dan kebenaran sumber informasi sebelum menyebarkannya',
+      'Menghapus semua aplikasi media sosial selamanya',
+      'Mengabaikan perkembangan teknologi komunikasi',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Salah satu strategi menghadapi tantangan hoaks di era digital adalah melakukan verifikasi fakta dan memeriksa sumber informasi secara kritis.',
+    npc: 'nara',
+  },
+  {
+    id: 'chest_q2',
+    category: 'Strategi Masa Depan',
+    deckTag: 'community_chest',
+    difficulty: 'Menengah',
+    text: 'Mengapa kemampuan belajar sepanjang hayat (lifelong learning) dan adaptasi menjadi keterampilan yang sangat krusial di era digital saat ini?',
+    options: [
+      'Agar manusia tidak perlu lagi bekerja menggunakan teknologi',
+      'Karena perubahan teknologi yang cepat mengubah pola pekerjaan dan menuntut kompetensi baru secara berkelanjutan',
+      'Supaya manusia bisa menguasai seluruh kekayaan alam dunia',
+      'Untuk menghindari interaksi sosial secara langsung dengan sesama',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Adaptasi dan lifelong learning penting karena kemajuan teknologi mengubah jenis pekerjaan dan keterampilan yang dibutuhkan, sehingga manusia harus terus belajar menyesuaikan diri.',
+    npc: 'saga',
+  },
+  {
+    id: 'chest_q3',
+    category: 'Tantangan Global',
+    deckTag: 'community_chest',
+    difficulty: 'Menengah',
+    scenario:
+      'Produk UMKM lokal harus bersaing ketat dengan produk impor murah yang dijual bebas melintasi batas negara lewat platform e-commerce.',
+    text: 'Berdasarkan modul, solusi strategis apa yang harus diambil oleh UMKM lokal untuk menghadapi tantangan tersebut?',
+    options: [
+      'Menutup seluruh toko fisik dan berhenti berdagang',
+      'Meminta pemerintah melarang semua bentuk perdagangan digital',
+      'Meningkatkan kualitas produk, inovasi, dan memanfaatkan pemasaran digital',
+      'Meniru produk luar tanpa modifikasi',
+    ],
+    correctIndex: 2,
+    explanation:
+      'Dalam menghadapi persaingan ekonomi global, pelaku usaha perlu meningkatkan kualitas, inovasi produk, serta mengoptimalkan teknologi digital.',
+    npc: 'saga',
+  },
+  {
+    id: 'chest_q4',
+    category: 'Tantangan Global',
+    deckTag: 'community_chest',
+    difficulty: 'Menengah',
+    text: 'Masalah global seperti perubahan iklim, kejahatan siber lintas negara, dan kesenjangan teknologi tidak dapat diselesaikan oleh satu negara saja. Bentuk penyelesaian apa yang paling tepat?',
+    options: [
+      'Isolasi ekonomi total dari negara lain',
+      'Melakukan kerja sama global dalam riset, pendidikan, dan keamanan digital',
+      'Menghentikan seluruh inovasi pabrik industri di dunia',
+      'Menyerahkan pengelolaan teknologi pada satu individu',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Kerja sama global melalui pertukaran ilmu, penelitian bersama, dan penanganan masalah lingkungan/keamanan siber sangat dibutuhkan untuk mengatasi tantangan dunia modern.',
+    npc: 'nara',
+  },
+  {
+    id: 'chest_q5',
+    category: 'Dampak Teknologi',
+    deckTag: 'community_chest',
+    difficulty: 'Dasar',
+    scenario:
+      'Raka sering menggunakan tanggal lahirnya sebagai kata sandi untuk semua akun media sosial dan dompet digitalnya.',
+    text: 'Langkah perbaikan apa yang harus dilakukan Raka untuk menjaga keamanan data pribadinya di era digital?',
+    options: [
+      'Membagikan kata sandinya kepada teman dekat sebagai cadangan',
+      'Menggunakan kata sandi yang kuat dan tidak membagikan kode rahasia kepada pihak lain',
+      'Menuliskan kata sandi di bio profil media sosialnya',
+      'Mengklik semua tautan hadiah yang masuk ke pesan singkat',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Menjaga keamanan data pribadi dilakukan dengan membuat kata sandi yang kuat serta merahasiakan informasi penting/kode verifikasi dari orang lain.',
+    npc: 'nara',
+  },
+  {
+    id: 'chest_q6',
+    category: 'Strategi Masa Depan',
+    deckTag: 'community_chest',
+    difficulty: 'Dasar',
+    text: 'Bagaimana cara paling efektif bagi generasi muda untuk memanfaatkan teknologi digital dalam mempertahankan budaya lokal Indonesia?',
+    options: [
+      'Melarang wisatawan asing melihat kesenian daerah',
+      'Membuat konten kreatif di media sosial untuk memperkenalkan kesenian dan budaya daerah ke masyarakat luas',
+      'Mengganti seluruh bahasa daerah dengan bahasa asing di internet',
+      'Menghindari penggunaan internet dalam kegiatan seni',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Media digital dapat dimanfaatkan sebagai sarana kreatif untuk melestarikan dan memperkenalkan kekayaan budaya Indonesia ke khalayak global.',
+    npc: 'saga',
+  },
+  {
+    id: 'chest_q7',
+    category: 'Strategi Masa Depan',
+    deckTag: 'community_chest',
+    difficulty: 'Menengah',
+    text: 'Di tengah banjir informasi di internet, keterampilan berpikir kritis (critical thinking) sangat dibutuhkan agar seseorang mampu...',
+    options: [
+      'Menghafal semua informasi yang ada di media sosial',
+      'Menilai kebenaran informasi, mengidentifikasi masalah, dan mengambil keputusan berdasarkan bukti yang tepat',
+      'Mengikuti semua tren viral tanpa mempertimbangkan dampaknya',
+      'Menghindari kerja sama dengan orang lain',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Berpikir kritis membantu individu menyaring informasi, menganalisis masalah secara objektif, dan membuat keputusan berbasis bukti.',
+    npc: 'nara',
+  },
+  {
+    id: 'chest_q8',
+    category: 'Dampak Teknologi',
+    deckTag: 'community_chest',
+    difficulty: 'Dasar',
+    text: 'Langkah nyata apa yang dapat dilakukan masyarakat untuk mengurangi dampak kerusakan lingkungan akibat perkembangan teknologi modern?',
+    options: [
+      'Membeli perangkat elektronik baru setiap bulan',
+      'Membuang baterai dan gawai rusak ke sungai',
+      'Mengurangi limbah elektronik dan mendukung penggunaan teknologi ramah lingkungan',
+      'Meningkatkan penggunaan bahan bakar fosil secara besar-besaran',
+    ],
+    correctIndex: 2,
+    explanation:
+      'Upaya mengatasi tantangan lingkungan di era industri dan digital meliputi penerapan teknologi ramah lingkungan serta pengelolaan/pengurangan limbah elektronik.',
+    npc: 'saga',
+  },
+
+  // =========================================================================
+  // BANK SOAL PETAK NEGARA (12 Negara × 2 Variasi = 24 Soal Edukatif)
+  // =========================================================================
+  {
+    id: 'country_inggris_1',
+    countryId: 'inggris',
+    deckTag: 'country',
+    category: 'Revolusi Industri',
+    difficulty: 'Dasar',
+    text: 'Inggris dikenal sebagai tempat dimulainya Revolusi Industri 1.0. Dampak langsung mekanisasi pabrik tekstil terhadap kehidupan pekerja saat itu adalah...',
+    options: [
+      'Semua pekerjaan langsung digantikan oleh kecerdasan buatan',
+      'Terjadinya urbanisasi besar-besaran dari desa ke kota industri',
+      'Pekerja tidak lagi memerlukan keterampilan maupun jam kerja',
+      'Seluruh pabrik ditutup dan kembali ke pertanian tradisional',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Mekanisasi di Inggris mendorong perpindahan penduduk ke kota-kota industri (urbanisasi) untuk bekerja di pabrik-pabrik baru.',
+    npc: 'arka',
+  },
+  {
+    id: 'country_inggris_2',
+    countryId: 'inggris',
+    deckTag: 'country',
+    category: 'Dampak Teknologi',
+    difficulty: 'Menengah',
+    text: 'Penggunaan mesin uap berbahan bakar batu bara secara masif sejak Revolusi Industri di Inggris memicu tantangan lingkungan jangka panjang berupa...',
+    options: [
+      'Peningkatan emisi karbon dan pencemaran udara',
+      'Penurunan penggunaan energi secara total di seluruh Eropa',
+      'Hilangnya kebutuhan transportasi lintas benua',
+      'Berkurangnya aktivitas perdagangan internasional',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Pembakaran batu bara untuk mesin uap dan pabrik menghasilkan emisi karbon tinggi yang menjadi awal tantangan polusi dan perubahan iklim.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_jerman_1',
+    countryId: 'jerman',
+    deckTag: 'country',
+    category: 'Era Digital',
+    difficulty: 'Dasar',
+    text: 'Jerman memperkenalkan konsep "Industrie 4.0". Inti dari sistem pabrik pintar (Smart Factory) dalam konsep tersebut adalah...',
+    options: [
+      'Mengembalikan seluruh proses manufaktur ke tenaga manusia tanpa listrik',
+      'Mengintegrasikan mesin fisik, sensor IoT, dan analisis data secara real-time',
+      'Menghapus seluruh penggunaan komputer di lantai produksi',
+      'Membatasi koneksi internet hanya untuk hiburan',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Industrie 4.0 di Jerman memadukan mesin industri dengan sensor IoT, komputasi awan, dan analisis data otomatis agar produksi lebih efisien.',
+    npc: 'arka',
+  },
+  {
+    id: 'country_jerman_2',
+    countryId: 'jerman',
+    deckTag: 'country',
+    category: 'Strategi Masa Depan',
+    difficulty: 'Menengah',
+    text: 'Menghadapi otomatisasi di negara industri maju seperti Jerman, strategi apa yang perlu disiapkan oleh calon tenaga kerja muda?',
+    options: [
+      'Menolak mempelajari perangkat lunak baru',
+      'Mengandalkan satu keterampilan lama seumur hidup',
+      'Menguasai literasi digital, pemecahan masalah kompleks, dan kolaborasi',
+      'Menghindari bidang sains dan teknologi sama sekali',
+    ],
+    correctIndex: 2,
+    explanation:
+      'Otomatisasi mengambil alih pekerjaan rutin, sehingga manusia perlu unggul dalam literasi digital, kreativitas, dan pemecahan masalah kompleks.',
+    npc: 'saga',
+  },
+  {
+    id: 'country_prancis_1',
+    countryId: 'prancis',
+    deckTag: 'country',
+    category: 'Tantangan Global',
+    difficulty: 'Menengah',
+    text: 'Sebagai bagian dari Uni Eropa, Prancis menerapkan regulasi perlindungan data pribadi (GDPR). Mengapa aturan privasi digital sangat penting di Era Digital?',
+    options: [
+      'Agar perusahaan dapat menjual data pribadi pengguna secara bebas',
+      'Untuk melindungi hak warga atas data pribadinya dari penyalahgunaan dan kebocoran',
+      'Supaya masyarakat berhenti menggunakan layanan perbankan online',
+      'Agar semua situs web tidak bisa diakses dari luar negeri',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Regulasi privasi digital memastikan data pribadi pengguna dikumpulkan secara transparan, aman, dan tidak disalahgunakan pihak tak bertanggung jawab.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_prancis_2',
+    countryId: 'prancis',
+    deckTag: 'country',
+    category: 'Dampak Teknologi',
+    difficulty: 'Dasar',
+    text: 'Kemajuan transportasi modern seperti kereta cepat di Prancis dan Eropa merupakan dampak positif teknologi di bidang...',
+    options: [
+      'Mobilitas dan konektivitas antarwilayah yang semakin cepat dan efisien',
+      'Pengurangan akses pendidikan bagi masyarakat kota',
+      'Penghapusan seluruh jalur komunikasi digital',
+      'Peningkatan isolasi antarnegara tetangga',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Inovasi rekayasa dan energi bersih meningkatkan kecepatan, keselamatan, dan efisiensi mobilitas masyarakat serta distribusi barang.',
+    npc: 'arka',
+  },
+  {
+    id: 'country_jepang_1',
+    countryId: 'jepang',
+    deckTag: 'country',
+    category: 'Era Digital',
+    difficulty: 'Dasar',
+    text: 'Jepang menggagas konsep "Society 5.0". Apa tujuan utama dari konsep masyarakat super-cerdas tersebut?',
+    options: [
+      'Menggantikan seluruh peran manusia dalam kehidupan sosial dengan robot',
+      'Menyeimbangkan kemajuan ekonomi dan teknologi digital untuk menyelesaikan masalah sosial manusia',
+      'Menghilangkan penggunaan internet di sektor kesehatan dan pendidikan',
+      'Mengisolasi diri dari perdagangan teknologi global',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Society 5.0 menempatkan manusia sebagai pusat, memanfaatkan AI, IoT, dan Big Data untuk meningkatkan kualitas hidup dan memecahkan masalah sosial.',
+    npc: 'arka',
+  },
+  {
+    id: 'country_jepang_2',
+    countryId: 'jepang',
+    deckTag: 'country',
+    category: 'Tantangan Global',
+    difficulty: 'Menengah',
+    text: 'Penggunaan robotika canggih di industri Jepang membawa manfaat efisiensi, namun juga menimbulkan tantangan ketenagakerjaan berupa...',
+    options: [
+      'Berkurangnya kebutuhan jenis pekerjaan manual yang bersifat repetitif',
+      'Hilangnya kebutuhan tenaga ahli pemeliharaan dan pemrograman sistem',
+      'Menurunnya kecepatan produksi barang elektronik',
+      'Tidak adanya perubahan pola kerja sama sekali',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Robotika menggantikan tugas-tugas berulang, sehingga pekerja perlu melakukan peningkatan keterampilan (upskilling) ke peran teknis dan kreatif.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_tiongkok_1',
+    countryId: 'tiongkok',
+    deckTag: 'country',
+    category: 'Dampak Teknologi',
+    difficulty: 'Menengah',
+    text: 'Pesatnya platform e-commerce dan pembayaran digital di Tiongkok mengubah pola ekonomi masyarakat. Salah satu dampak positif utamanya adalah...',
+    options: [
+      'Transaksi menjadi lebih lambat dan terbatas secara geografis',
+      'Memudahkan pelaku usaha menjangkau pasar luas secara cepat dan efisien',
+      'Menghapus kebutuhan akan kualitas produk dan pelayanan',
+      'Menghilangkan semua persaingan antarpenjual',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Ekonomi digital mempercepat transaksi non-tunai dan membuka peluang pasar lintas wilayah bagi berbagai skala usaha.',
+    npc: 'saga',
+  },
+  {
+    id: 'country_tiongkok_2',
+    countryId: 'tiongkok',
+    deckTag: 'country',
+    category: 'Tantangan Global',
+    difficulty: 'Lanjut',
+    text: 'Dalam era perdagangan digital global, membanjirnya produk murah dari luar negeri menuntut konsumen dan produsen lokal bersikap bijak. Sikap yang tepat bagi generasi muda adalah...',
+    options: [
+      'Membeli produk hanya karena tren tanpa memeriksa kualitas dan kebutuhannya',
+      'Mendukung inovasi produk lokal serta berbelanja secara cermat dan kritis',
+      'Berhenti memanfaatkan platform digital untuk berwirausaha',
+      'Menyebarkan ulasan palsu untuk menjatuhkan pesaing',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Konsumen cerdas memprioritaskan kebutuhan dan kualitas, sementara produsen lokal berinovasi agar mampu bersaing di pasar digital.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_korea_selatan_1',
+    countryId: 'korea_selatan',
+    deckTag: 'country',
+    category: 'Dampak Teknologi',
+    difficulty: 'Dasar',
+    text: 'Korea Selatan sukses memadukan internet berkecepatan tinggi dengan industri kreatif (musik, film, gim). Dampak positif teknologi bagi budaya yang terlihat dari fenomena ini adalah...',
+    options: [
+      'Karya budaya lokal dapat dipromosikan dan dikenal secara global melalui media digital',
+      'Generasi muda dilarang mempelajari kesenian tradisionalnya sendiri',
+      'Budaya lokal otomatis punah jika diunggah ke internet',
+      'Hanya satu negara yang boleh membuat konten digital',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Platform digital memungkinkan produk budaya dikemas kreatif dan disebarkan ke seluruh dunia tanpa terhalang jarak fisik.',
+    npc: 'saga',
+  },
+  {
+    id: 'country_korea_selatan_2',
+    countryId: 'korea_selatan',
+    deckTag: 'country',
+    category: 'Tantangan Global',
+    difficulty: 'Menengah',
+    text: 'Tingginya konektivitas digital juga dapat memicu ketergantungan gawai dan perundungan siber (cyberbullying). Bagaimana cara menggunakan teknologi secara bijak?',
+    options: [
+      'Menggunakan media sosial sepanjang malam tanpa batas waktu',
+      'Menerapkan etika digital, menjaga empati di ruang siber, dan mengatur waktu layar (screen time)',
+      'Membuat akun anonim untuk mengomentari orang lain secara kasar',
+      'Membagikan seluruh aktivitas pribadi secara real-time kepada orang asing',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Etika digital dan keseimbangan waktu penggunaan teknologi menjaga kesehatan mental serta menciptakan ruang siber yang aman.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_amerika_serikat_1',
+    countryId: 'amerika_serikat',
+    deckTag: 'country',
+    category: 'Revolusi Industri',
+    difficulty: 'Dasar',
+    text: 'Pada awal abad ke-20, Henry Ford di Amerika Serikat menerapkan sistem ban berjalan (assembly line) bertenaga listrik. Inovasi ini menjadi ikon dari...',
+    options: [
+      'Revolusi Industri 1.0',
+      'Revolusi Industri 2.0',
+      'Revolusi Industri 3.0',
+      'Revolusi Industri 4.0',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Sistem jalur perakitan massal dan penggunaan energi listrik merupakan ciri khas Revolusi Industri 2.0 yang meningkatkan volume produksi secara drastis.',
+    npc: 'arka',
+  },
+  {
+    id: 'country_amerika_serikat_2',
+    countryId: 'amerika_serikat',
+    deckTag: 'country',
+    category: 'Era Digital',
+    difficulty: 'Menengah',
+    text: 'Teknologi Kecerdasan Buatan (Artificial Intelligence / AI) banyak dikembangkan oleh pusat riset teknologi di Amerika Serikat. Contoh pemanfaatan AI yang positif bagi siswa SMA adalah...',
+    options: [
+      'Menyalin seluruh tugas tanpa membaca atau memahaminya',
+      'Membuat informasi palsu untuk menipu teman sekelas',
+      'Sebagai asisten belajar interaktif untuk memahami konsep sulit dan berlatih soal',
+      'Mengambil alih kata sandi akun belajar orang lain',
+    ],
+    correctIndex: 2,
+    explanation:
+      'AI bermanfaat sebagai pendamping belajar yang menjelaskan konsep dan memberi latihan, selama tetap disertai berpikir kritis dan kejujuran akademik.',
+    npc: 'saga',
+  },
+  {
+    id: 'country_kanada_1',
+    countryId: 'kanada',
+    deckTag: 'country',
+    category: 'Era Digital',
+    difficulty: 'Menengah',
+    text: 'Banyak universitas di Kanada menjadi pelopor riset Deep Learning. Dalam konteks Era Digital, mengapa etika pengembangan AI perlu diperhatikan?',
+    options: [
+      'Agar sistem AI adil, bebas dari bias merugikan, dan menghormati privasi manusia',
+      'Supaya komputer tidak memerlukan listrik saat beroperasi',
+      'Agar teknologi AI hanya boleh digunakan di bidang hiburan',
+      'Untuk menghentikan seluruh penelitian ilmiah di perguruan tinggi',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Etika AI penting untuk memastikan keputusan otomatis tetap adil, transparan, aman, dan berpihak pada kemanusiaan.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_kanada_2',
+    countryId: 'kanada',
+    deckTag: 'country',
+    category: 'Strategi Masa Depan',
+    difficulty: 'Dasar',
+    text: 'Keterampilan "4C" abad ke-21 (Critical Thinking, Creativity, Communication, Collaboration) sangat ditekankan dalam pendidikan modern. Manakah yang mencerminkan kolaborasi digital?',
+    options: [
+      'Mengerjakan proyek lintas kota bersama tim menggunakan dokumen daring dan konferensi video',
+      'Menyimpan seluruh materi belajar untuk diri sendiri agar teman tidak tahu',
+      'Menolak berdiskusi karena merasa paling pintar',
+      'Mengandalkan satu orang saja untuk menyelesaikan tugas kelompok',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Kolaborasi digital memanfaatkan perangkat daring untuk bekerja sama secara produktif meski berada di lokasi berbeda.',
+    npc: 'saga',
+  },
+  {
+    id: 'country_brasil_1',
+    countryId: 'brasil',
+    deckTag: 'country',
+    category: 'Dampak Teknologi',
+    difficulty: 'Menengah',
+    text: 'Di Brasil, teknologi satelit dan sensor IoT digunakan untuk memantau kelestarian hutan Amazon dan efisiensi pertanian. Hal ini membuktikan bahwa teknologi modern dapat...',
+    options: [
+      'Mendukung pelestarian lingkungan dan ketahanan pangan berkelanjutan',
+      'Mempercepat penggundulan hutan tanpa bisa dideteksi',
+      'Menggantikan seluruh air dan tanah dengan perangkat keras',
+      'Menghilangkan kebutuhan petani akan informasi cuaca',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Pemantauan satelit, drone, dan sensor IoT membantu mendeteksi deforestasi dini serta menghemat penggunaan air dan pupuk.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_brasil_2',
+    countryId: 'brasil',
+    deckTag: 'country',
+    category: 'Tantangan Global',
+    difficulty: 'Lanjut',
+    text: 'Ketimpangan akses internet antara kota besar dan daerah pedalaman di negara berkembang merupakan contoh nyata tantangan global yang disebut...',
+    options: [
+      'Kesenjangan digital (digital divide)',
+      'Revolusi mekanisasi uap',
+      'Otomatisasi pabrik penuh',
+      'Surplus energi terbarukan',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Kesenjangan digital adalah ketimpangan akses terhadap infrastruktur internet, perangkat teknologi, dan kemampuan memanfaatkannya.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_afrika_selatan_1',
+    countryId: 'afrika_selatan',
+    deckTag: 'country',
+    category: 'Tantangan Global',
+    difficulty: 'Menengah',
+    text: 'Untuk mengatasi kesenjangan digital di wilayah terpencil seperti sebagian daerah di Afrika Selatan, solusi kerja sama global yang paling tepat adalah...',
+    options: [
+      'Membangun infrastruktur jaringan internet terjangkau dan pelatihan literasi digital masyarakat',
+      'Melarang penduduk desa memiliki telepon genggam',
+      'Menaikkan tarif internet setinggi-tingginya',
+      'Memusatkan seluruh sekolah hanya di satu ibu kota negara',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Mengatasi kesenjangan digital membutuhkan pembangunan infrastruktur konektivitas yang merata sekaligus edukasi literasi digital.',
+    npc: 'saga',
+  },
+  {
+    id: 'country_afrika_selatan_2',
+    countryId: 'afrika_selatan',
+    deckTag: 'country',
+    category: 'Dampak Teknologi',
+    difficulty: 'Dasar',
+    text: 'Meningkatnya jumlah perangkat elektronik usang yang menumpuk tanpa daur ulang menimbulkan masalah limbah berbahaya yang disebut...',
+    options: [
+      'E-waste (limbah elektronik)',
+      'Cloud storage',
+      'Big Data analytics',
+      'Assembly line',
+    ],
+    correctIndex: 0,
+    explanation:
+      'E-waste mengandung bahan kimia berbahaya seperti timbal dan merkuri yang perlu dikelola atau didaur ulang secara aman.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_kenya_1',
+    countryId: 'kenya',
+    deckTag: 'country',
+    category: 'Dampak Teknologi',
+    difficulty: 'Dasar',
+    text: 'Kenya terkenal dengan inovasi layanan transaksi keuangan lewat ponsel sederhana bagi warga yang belum memiliki rekening bank. Dampak positif teknologi ini adalah...',
+    options: [
+      'Meningkatkan inklusi keuangan dan memudahkan masyarakat kecil bertransaksi dengan aman',
+      'Membuat masyarakat tidak bisa menabung sama sekali',
+      'Mengharuskan semua warga membeli komputer super mahal',
+      'Menghentikan aktivitas perdagangan pasar tradisional',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Teknologi finansial berbasis ponsel membantu masyarakat di daerah terpencil mengakses layanan pembayaran dan tabungan secara mudah.',
+    npc: 'arka',
+  },
+  {
+    id: 'country_kenya_2',
+    countryId: 'kenya',
+    deckTag: 'country',
+    category: 'Tantangan Global',
+    difficulty: 'Menengah',
+    text: 'Seiring meningkatnya transaksi keuangan digital, ancaman penipuan daring (phishing) ikut meningkat. Tindakan pencegahan terbaik saat menerima tautan mencurigakan adalah...',
+    options: [
+      'Segera memasukkan kode OTP agar hadiah tidak hangus',
+      'Mengabaikan tautan, tidak memberikan kode OTP/PIN, dan memverifikasi lewat kanal resmi',
+      'Meneruskan tautan tersebut ke seluruh kontak keluarga',
+      'Menggunakan kata sandi yang sama di semua aplikasi',
+    ],
+    correctIndex: 1,
+    explanation:
+      'Kode OTP dan PIN bersifat sangat rahasia; pengguna harus selalu memverifikasi kebenaran informasi melalui saluran resmi.',
+    npc: 'nara',
+  },
+  {
+    id: 'country_australia_1',
+    countryId: 'australia',
+    deckTag: 'country',
+    category: 'Era Digital',
+    difficulty: 'Dasar',
+    text: 'Di wilayah pedalaman Australia yang luas dan berjarak jauh, pembelajaran jarak jauh berbasis internet dimanfaatkan untuk...',
+    options: [
+      'Menghadirkan akses pendidikan berkualitas tanpa terhalang jarak geografis',
+      'Menghapus peran guru dalam membimbing siswa',
+      'Membuat siswa berhenti berinteraksi dengan sesama',
+      'Membatasi sumber bacaan hanya pada satu buku cetak',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Teknologi pendidikan daring menjembatani jarak geografis sehingga siswa di wilayah terpencil tetap memperoleh akses belajar.',
+    npc: 'saga',
+  },
+  {
+    id: 'country_australia_2',
+    countryId: 'australia',
+    deckTag: 'country',
+    category: 'Strategi Masa Depan',
+    difficulty: 'Menengah',
+    text: 'Australia banyak berinvestasi pada teknologi energi surya dan baterai penyimpanan besar. Hal ini menunjukkan strategi menghadapi tantangan global berupa...',
+    options: [
+      'Transisi menuju energi bersih terbarukan untuk menekan dampak perubahan iklim',
+      'Peningkatan pembakaran batu bara tanpa filter asap',
+      'Penghapusan seluruh peralatan listrik rumah tangga',
+      'Penghentian penelitian sains lingkungan',
+    ],
+    correctIndex: 0,
+    explanation:
+      'Pengembangan energi terbarukan merupakan solusi teknologi berkelanjutan untuk mengurangi emisi karbon di era modern.',
+    npc: 'arka',
+  },
+];
+
+export const QUESTION_BANK: Question[] = [...CORE_QUESTIONS, ...MARATHON_QUESTIONS];
